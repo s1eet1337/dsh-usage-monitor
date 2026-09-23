@@ -1,0 +1,16 @@
+# dsh-usage-monitor bundle patch layer.
+#
+# One row carries both halves:
+#   - the host plugin resolves from this package's main export (`lib/index.js`),
+#   - the client half rides the same row: DSH's client-modules scans Loader
+#     entries for packages declaring `dsh.client` (package.json) and serves
+#     their `./client` bundle into the web boot graph.
+#
+# Optional row config (all fields optional; see README for the full schema):
+#   config:
+#     storageDir: ~/.dsh/storages/dsh-usage-monitor   # default: $DSH_HOME/storages/dsh-usage-monitor
+#     balances: { deepseek: { budget: 100, warnPct: 5 } }
+#     webhooks: [ { url: 'https://example.com/hook', secret: '' } ]
+- insert:
+    - id: dsh-usage-monitor
+      name: 'dsh-usage-monitor'

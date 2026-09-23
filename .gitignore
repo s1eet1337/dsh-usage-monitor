@@ -1,0 +1,12 @@
+node_modules/
+.npm-cache/
+lib/.client-stage/
+.tmp-*/
+*.tgz
+.scratch-ts/
+.reference/
+.write-probe/
+.DS_Store
+
+.install-backup/
+.recovery-backup/

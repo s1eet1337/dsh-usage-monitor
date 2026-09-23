@@ -1,0 +1,77 @@
+{
+  "name": "dsh-usage-monitor",
+  "version": "0.1.0",
+  "description": "DSH (DeepSeek Harness) Web 插件：多模型用量与余额监控 —— 多 Provider 余额适配器（DeepSeek/OpenAI/Anthropic/智谱/Moonshot/SiliconFlow）、会话日志用量统计（7/30/90 天趋势）、预算进度、低余额告警（芯片红点 + 弹窗 + Webhook）、CSV 导出。Multi-provider usage & balance monitor for the DeepSeek Harness web GUI.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "plugin",
+    "usage",
+    "balance",
+    "monitor",
+    "billing",
+    "web",
+    "multi-provider"
+  ],
+  "homepage": "https://github.com/example/dsh-usage-monitor#readme",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "testedWith": "0.1.5-rc.2 (running host, verified) / 0.1.6-alpha.2 (official @deepseek-ai/dsh-desktop master, contract code-reviewed)",
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.client.json --noEmit",
+    "build": "node scripts/build.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "verify": "node scripts/verify.mjs",
+    "prepare": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.0",
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "typescript": "^5.9.0"
+  }
+}
